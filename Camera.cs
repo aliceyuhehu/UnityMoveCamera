@@ -140,7 +140,7 @@ public class MoveCamera : MonoBehaviour
         transform.forward = v3forward;
 
         unixTime = curTime.ToString();
-        if (t > 1)
+        if (Input.GetKeyDown("b"))
         {
             ScreenCapture.CaptureScreenshot(System.IO.Directory.GetCurrentDirectory() + "/nasa/rgb/" + unixTime + ".png");
             string content = unixTime + " " + transform.position.x.ToString() + " " + transform.position.z.ToString() + " " + transform.position.y.ToString() + " " + transform.rotation.x.ToString() + " " + transform.rotation.y.ToString() + " " + transform.rotation.z.ToString() + " " + transform.rotation.w.ToString() + '\n';
