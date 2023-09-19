@@ -89,14 +89,32 @@ public class MoveCamera : MonoBehaviour
         transform.Rotate(0, Input.GetAxis("Mouse X") * rotationSensitivity2, 0);
         transform.Rotate(-Input.GetAxis("Mouse Y") * rotationSensitivity2, 0, 0);
         rotate = 0;
+        
         if (Input.GetKey("z"))
             rotate = -rotationSensitivity;
         if (Input.GetKey("x"))
             rotate = rotationSensitivity;
         transform.Rotate(0, rotate, 0);
+        
+
+
+        float verticalRotation = 0;
+        float horizontalRotation = 0;
+
+        if (Input.GetKey("i"))
+            verticalRotation = -rotationSensitivity;  // Tilt up
+        if (Input.GetKey("k"))
+            verticalRotation = rotationSensitivity;  // Tilt down
+        if (Input.GetKey("j"))
+            horizontalRotation = -rotationSensitivity;  // Turn left
+        if (Input.GetKey("l"))
+            horizontalRotation = rotationSensitivity;  // Turn right
+
+        transform.Rotate(verticalRotation, horizontalRotation, 0);
+
         v3forward = transform.forward;
         v3forward_altered = new Vector3(v3forward.x, 0, v3forward.z);
-
+    
         transform.forward = v3forward_altered;
         savedPosition = transform.position;
         vertical = (Input.GetAxis("Vertical") > 0) ? Input.GetAxis("Vertical") : 0;
